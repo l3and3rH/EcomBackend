@@ -1,14 +1,34 @@
-version: '3.9'
-
-services:
-  postgres:
-    image: postgres
+services: 
+  node_backend: 
+    container_name: node_backend
+    image: node
+    build:
+      context: .
     ports:
-      - '5432:5432'
+      - '3000:3000'
     env_file:
-      - .env
+      - .env  
+    environment:
+      - DEV_DB=$DEV_DB
+      - POSTGRES_USER=$DEV_DB_User
+      - POSTGRES_PASSWORD=$DEV_DB_PW
+      - POSTGRES_HOST=$DEV_DB_HOST  
+    depends_on: 
+      - db
+  db:
+    container_name: db
+    image: 'postgres:12'
+    ports:
+      - '4022:4022'
+    env_file:
+      - .env  
+    environment:
+      - DEV_DB=$DEV_DB
+      - POSTGRES_USER=$DEV_DB_User
+      - POSTGRES_PASSWORD=$DEV_DB_PW
+      - POSTGRES_HOST=$DEV_DB_HOST 
     volumes:
-      - 'postgres:/var/lib/postgresql/data'
+      - pgdata1:/var/lib/postgresql/data
 
 volumes:
-  postgres:
+  pgdata1: {}
