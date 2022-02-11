@@ -4,7 +4,7 @@ import dotenv from 'dotenv'
 
 dotenv.config();
 
-export const authorize = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const authorize = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
     
     try {
         const authorizationHeader = String(req.headers.authorization)

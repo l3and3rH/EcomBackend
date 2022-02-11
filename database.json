@@ -2,7 +2,7 @@
     "dev":
     {
       "driver": "pg",
-      "host": "127.0.0.1",
+      "host": "localhost",
       "database": "EcomDB",
       "user": "EcomDB_User",
       "password": "devpw123"

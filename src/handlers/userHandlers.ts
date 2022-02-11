@@ -8,13 +8,13 @@ dotenv.config();
 
 const store= new UserStore();
 
-const index = async (req: Request, res: Response) => {
+const index = async (req: Request, res: Response): Promise<void> => {
     const user = await store.index();
     res.json(user);
 }
 
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: Request, res: Response): Promise<void> => {
     try {
         const user = await store.create(req.body.firstname, req.body.lastname, req.body.password);
 
@@ -26,7 +26,7 @@ const create = async (req: Request, res: Response) => {
     }
 }
 
-const autheticate = async (req: Request, res: Response) => {
+const autheticate = async (req: Request, res: Response): Promise<void> => {
     try {
         const user = await store.authenticate(req.body.firstname, req.body.lastname, req.body.password);
 
@@ -38,12 +38,12 @@ const autheticate = async (req: Request, res: Response) => {
     }
 }
 
-const show = async (req: Request, res: Response) => {
+const show = async (req: Request, res: Response): Promise<void> => {
     const user = await store.show(req.params.id);
     res.json(user);
 }
 
-export const user_store_routes =  (app: express.Application) => {
+export const user_store_routes =  (app: express.Application): void => {
     app.get( '/User', authorize ,index);
     app.post( '/User', create);
     app.post( '/User/Login', autheticate);
