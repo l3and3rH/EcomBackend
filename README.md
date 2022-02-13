@@ -15,8 +15,8 @@ CREATE DATABASE EcomDB;
 GRANT ALL PRIVILEGES ON DATABASE EcomDB TO EcomDB_User;
 
 Then Setup an .env file with the following variables:
-DEV_DB=EcomDB
-DEV_DB_User=EcomDB_User
+DEV_DB=ecomdb
+DEV_DB_User=ecomdb_user
 DEV_DB_PW=devpw123
 DEV_DB_HOST=localhost
 Pepper=pfsönjlfshadiuwer8892p3i4pj3hwef832zhliwd

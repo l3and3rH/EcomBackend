@@ -3,8 +3,9 @@
     {
       "driver": "pg",
       "host": "localhost",
-      "database": "EcomDB",
-      "user": "EcomDB_User",
-      "password": "devpw123"
+      "database": "ecomdb",
+      "user": "ecomdb_user",
+      "password": "devpw123",
+      "port": 2204
     }
   }

@@ -4,7 +4,7 @@ import {user_store_routes} from './handlers/userHandlers';
 import {product_store_routes} from './handlers/productHandlers';
 import {order_store_routes} from './handlers/orderHandlers';
 
-const app: express.Application = express()
+export const app: express.Application = express()
 const port: number = 3000
 
 app.use(bodyParser.json())
