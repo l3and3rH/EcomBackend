@@ -9,8 +9,8 @@ dotenv.config();
 const store= new UserStore();
 
 const index = async (req: Request, res: Response): Promise<void> => {
-    const user = await store.index();
-    res.json(user);
+    const users = await store.index();
+    res.json(users);
 }
 
 

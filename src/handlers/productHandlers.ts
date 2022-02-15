@@ -10,7 +10,7 @@ const index = async (_req: Request, res: Response): Promise<void> => {
 }
 
 const show = async (req: Request, res: Response): Promise<void> => {
-    const product = await store.show(req.params.id);
+    const product = await store.show(String(req.params.id));
     res.json(product);
 }
 
