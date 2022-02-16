@@ -33,7 +33,16 @@ describe('Test Order Endpoints', function () {
     });
 
     it("add product to order", async () => {
-        const response = await request(app)
+       await request(app)
+      .post("/products")
+      .send({
+          name: "New Product",
+          price: 100,
+          category: "Test"
+      })
+      .set("Accept", "application/json")
+      .set("Authorization", token);      
+      const response = await request(app)
           .post("/orders/1/products")
           .send({
             order_id: '1',

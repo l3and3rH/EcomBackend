@@ -25,7 +25,7 @@ export class UserStore {
             return result.rows;
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not get Users. Error: ${error}`)
         }
 
     }
@@ -42,7 +42,7 @@ export class UserStore {
             return result.rows[0];
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not show User. Error: ${error}`)
         }
 
     }
@@ -60,24 +60,30 @@ export class UserStore {
             return result.rows[0];
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not create User. Error: ${error}`)
         }
 
     }
     async authenticate(firstname: string, lastname: string, password: string): Promise<User | null> {
-        const conn = await client.connect()
-        const sql = 'SELECT password_digest FROM users WHERE firstname=($1) AND lastname=($2)'
-    
-        const result = await conn.query(sql, [firstname, lastname])
-    
-        if(result.rows.length) {
-    
-          const user = result.rows[0]
-    
-          if (bcrypt.compareSync(password+process.env.Pepper, user.password_digest)) {
-            return user
-          }
+        
+        try {
+            const conn = await client.connect()
+            const sql = 'SELECT password_digest FROM users WHERE firstname=($1) AND lastname=($2)'
+        
+            const result = await conn.query(sql, [firstname, lastname])
+        
+            if(result.rows.length) {
+        
+              const user = result.rows[0]
+        
+              if (bcrypt.compareSync(password+process.env.Pepper, user.password_digest)) {
+                return user
+              }
+            }
+        } catch (error) {
+            throw new Error(`Could not Authenticate. Error: ${error}`)
         }
+
     
         return null}
 

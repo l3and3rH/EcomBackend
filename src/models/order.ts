@@ -19,7 +19,7 @@ export class OrderStore {
             return result.rows;
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not get Orders. Error: ${error}`)
         }
 
     }
@@ -36,7 +36,7 @@ export class OrderStore {
             return result.rows;
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not get Order. Error: ${error}`)
         }
 
     }
@@ -54,7 +54,7 @@ export class OrderStore {
             return result.rows[0];
             
         } catch (error) {
-            throw new Error(`Could not get Products. Error: ${error}`)
+            throw new Error(`Could not create Order. Error: ${error}`)
         }
 
     }

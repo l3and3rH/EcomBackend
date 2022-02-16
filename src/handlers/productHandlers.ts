@@ -5,18 +5,35 @@ import { authorize } from '../middleware/authorize';
 const store= new ProductStore();
 
 const index = async (_req: Request, res: Response): Promise<void> => {
-    const products = await store.index();
-    res.json(products);
+    try {
+        const products = await store.index();
+        res.json(products);
+    } catch (error) {
+        res.status(400)
+        res.json(error)
+    }
+
 }
 
 const show = async (req: Request, res: Response): Promise<void> => {
-    const product = await store.show(String(req.params.id));
-    res.json(product);
+    try {
+        const product = await store.show(String(req.params.id));
+        res.json(product);
+    } catch (error) {
+        res.status(400)
+        res.json(error)
+    }
 }
 
 const create = async (req: Request, res: Response): Promise<void> => {
-    const product = await store.create(req.body.name, req.body.price, req.body.category);
-    res.json(product);
+    try {
+    
+        const product = await store.create(req.body.name, req.body.price, req.body.category);
+        res.json(product);
+    } catch (error) {
+        res.status(400)
+        res.json(error)
+    }
 }
 
 

@@ -7,5 +7,15 @@
       "user": "ecomdb_user",
       "password": "devpw123",
       "port": 2204
+    },
+
+    "test":
+    {
+      "driver": "pg",
+      "host": "localhost",
+      "database": "ecomdb_test",
+      "user": "ecomdb_user",
+      "password": "devpw123",
+      "port": 2204
     }
   }

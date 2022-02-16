@@ -8,11 +8,15 @@ npm install & npm run build
 
 You will need a database and a couple of env variables
 
-First Create local database
+First Create local database running on Port 2204
+
+Note: Please make sure your database is on Port 2204 and your Server is running on Port 3000
 
 CREATE USER EcomDB_User WITH PASSWORD 'devpw123';
-CREATE DATABASE EcomDB;
+CREATE DATABASE Ecomdb_test;
+CREATE DATABASE Ecomdb;
 GRANT ALL PRIVILEGES ON DATABASE EcomDB TO EcomDB_User;
+GRANT ALL PRIVILEGES ON DATABASE EcomDB_test TO EcomDB_User;
 
 Then Setup an .env file with the following variables:
 DEV_DB=ecomdb
@@ -22,6 +26,8 @@ DEV_DB_HOST=localhost
 Pepper=pfsönjlfshadiuwer8892p3i4pj3hwef832zhliwd
 SaltRounds=10
 TOKEN_SECRET=nsaldksahdlsesfdd
+TEST_DB=ecomdb_test
+ENV=dev
 
 # Migrate
 

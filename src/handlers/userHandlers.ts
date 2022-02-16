@@ -9,8 +9,14 @@ dotenv.config();
 const store= new UserStore();
 
 const index = async (req: Request, res: Response): Promise<void> => {
-    const users = await store.index();
-    res.json(users);
+    try {
+        const users = await store.index();
+        res.json(users);
+    } catch (error) {
+        res.status(400)
+        res.json(error + req.body)
+    }
+
 }
 
 
@@ -33,14 +39,20 @@ const autheticate = async (req: Request, res: Response): Promise<void> => {
         var token = jwt.sign({ user }, String(process.env.TOKEN_SECRET));
         res.json(token);
     } catch (error) {
-        res.status(400)
+        res.status(401)
         res.json(error + req.body)
     }
 }
 
 const show = async (req: Request, res: Response): Promise<void> => {
-    const user = await store.show(req.params.id);
-    res.json(user);
+    try {
+        const user = await store.show(req.params.id);
+        res.json(user);
+    } catch (error) {
+        res.status(400)
+        res.json(error + req.body)
+    }
+
 }
 
 export const user_store_routes =  (app: express.Application): void => {

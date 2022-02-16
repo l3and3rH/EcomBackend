@@ -5,19 +5,36 @@ import { authorize } from '../middleware/authorize';
 const store= new OrderStore();
 
 const index = async (_req: Request, res: Response): Promise<void> => {
+  try {
     const orders = await store.index();
     res.json(orders);
+  } catch (error) {
+    res.status(400)
+    res.json(error)
+  }
+
 }
 
 const show = async (req: Request, res: Response): Promise<void> => {
+  try {
     const order = await store.showByUser(req.params.userId);
     res.json(order);
+  } catch (error) {
+    res.status(400)
+    res.json(error)
+  }  
+
 }
 
 const create = async (req: Request, res: Response): Promise<void> => {
+  try {
     const order = await store.createOrder(req.body.user_id, req.body.order_status);
     res.json(order);
-    
+  } catch (error) {
+    res.status(400)
+    res.json(error)
+  } 
+
 }
 
 const addProduct = async (_req: Request, res: Response): Promise<void> => {
